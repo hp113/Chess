@@ -14,7 +14,7 @@ export const ChessBoard = ({chess,setBoard,board, socket}: {
 }) => {
 
     const [from, setFrom]= useState<Square | null>(null);
-    const [to, setTo]= useState<Square | null>(null);
+    // const [to, setTo]= useState<Square | null>(null);
     return <div className="">
         {board.map((row,i) =>{
             return <div key={i} className="flex">

@@ -13,6 +13,7 @@ export const Game = () =>{
     const [chess] = useState(new Chess());
     const [board, setBoard] = useState(chess.board());
     const [started, setStarted] = useState(false);
+    const [selected, setSelected] = useState(false);
 
 
     useEffect(()=>{
@@ -55,12 +56,20 @@ export const Game = () =>{
                 <ChessBoard chess={chess} setBoard={setBoard} socket={socket} board ={board} />
             </div>
             <div className="col-span-2 bg-green-200 px-4">
-                {!started && <Button onClick={()=>{
+                {!selected && <Button onClick={()=>{
+                    setSelected(true);
                     socket.send(JSON.stringify({
                         type:INIT_GAME
 
                     }))
                 }}> Play </Button>}
+                {selected && !started && <Button onClick={()=>{
+                    // setStarted(true);
+                    // socket.send(JSON.stringify({
+                    //     type:INIT_GAME
+
+                    // }))
+                }}> Searching... </Button>}
             </div>
         </div>
     </div>
